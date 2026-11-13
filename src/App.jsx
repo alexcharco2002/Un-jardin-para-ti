@@ -91,7 +91,7 @@ export default function App() {
           <img
             src="/campo-girasoles.jpg"
             alt="Campo infinito de girasoles"
-            className="w-full h-full object-cover object-[50%_28%] select-none brightness-[0.92] contrast-[1.05] dark:brightness-[0.42] dark:contrast-[1.25] transition-all duration-700"
+            className="w-full h-full object-cover object-[50%_26%] select-none brightness-[0.92] contrast-[1.05] dark:brightness-[0.42] dark:contrast-[1.25] transition-all duration-700"
           />
         </motion.div>
 
@@ -102,7 +102,7 @@ export default function App() {
         <div className="absolute top-0 left-1/3 -translate-x-1/2 w-[600px] h-[360px] rounded-full bg-gradient-to-b from-amber-100/35 via-amber-300/18 to-transparent blur-3xl pointer-events-none dark:opacity-20" />
 
         {/* Neblina dorada atmosférica sobre las montañas y el fondo */}
-        <div className="absolute top-[32%] left-0 right-0 h-32 bg-gradient-to-b from-amber-100/10 via-amber-200/12 to-transparent blur-lg pointer-events-none dark:opacity-10" />
+        <div className="absolute top-[30%] left-0 right-0 h-32 bg-gradient-to-b from-amber-100/10 via-amber-200/12 to-transparent blur-lg pointer-events-none dark:opacity-10" />
 
         {/* Sombra de contraste inferior para fundir el suelo con las flores interactivas */}
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-stone-950/85 via-stone-950/45 to-transparent pointer-events-none" />
@@ -142,7 +142,7 @@ export default function App() {
 
       {/* Experiencia principal tras presionar abrir */}
       {hasStarted && (
-        <div className="relative z-10 flex flex-col min-h-screen justify-between pb-24">
+        <div className="relative z-10 flex flex-col min-h-screen justify-between pb-4 sm:pb-20">
           {/* Controles discretos en esquina superior derecha */}
           <div onClick={(e) => e.stopPropagation()}>
             <FloatingControls
@@ -153,27 +153,27 @@ export default function App() {
             />
           </div>
 
-          {/* Encabezado limpio con resplandor suave */}
-          <header className="pt-8 sm:pt-12 pb-1 text-center px-4 max-w-md mx-auto">
+          {/* Encabezado con padding horizontal para evitar colisión con los botones flotantes */}
+          <header className="pt-4 sm:pt-9 pb-1 text-center px-14 sm:px-6 max-w-lg mx-auto">
             <motion.h1
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="font-serif italic text-3xl sm:text-4xl text-amber-950 dark:text-amber-100 font-semibold tracking-tight drop-shadow-[0_2px_14px_rgba(255,255,255,0.7)] dark:drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]"
+              className="font-serif italic text-2xl sm:text-4xl text-amber-950 dark:text-amber-100 font-semibold tracking-tight drop-shadow-[0_2px_14px_rgba(255,255,255,0.85)] dark:drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)] leading-tight"
             >
               Un jardín de flores para ti
             </motion.h1>
           </header>
 
           {/* Sección del Jardín Panorámico 3D */}
-          <main className="flex-1 flex flex-col items-center justify-center my-auto">
+          <main className="flex-1 flex flex-col items-center justify-center my-auto w-full">
             <SunflowerGarden
               onSelectSunflower={() => setIsLetterModalOpen(true)}
               bloomKey={bloomKey}
             />
 
-            {/* Botón táctil para abrir el Modal Único de Mensaje */}
-            <div className="flex flex-col items-center gap-3 mt-4" onClick={(e) => e.stopPropagation()}>
+            {/* Botón táctil para abrir el Modal: en móvil tiene margen inferior para no tocar el reproductor */}
+            <div className="flex flex-col items-center gap-2 mt-2 sm:mt-4 mb-20 sm:mb-3 px-4 z-20" onClick={(e) => e.stopPropagation()}>
               <motion.button
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -181,7 +181,7 @@ export default function App() {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={handleOpenModal}
-                className="py-3 px-6 rounded-2xl glass-modal border border-amber-300/70 dark:border-amber-500/60 text-amber-950 dark:text-amber-100 font-medium text-sm shadow-[0_12px_32px_rgba(0,0,0,0.38)] flex items-center gap-2 group hover:bg-white/95 dark:hover:bg-stone-900/95 transition-all"
+                className="py-2.5 px-5 sm:py-3 sm:px-6 rounded-2xl glass-modal border border-amber-300/70 dark:border-amber-500/60 text-amber-950 dark:text-amber-100 font-medium text-xs sm:text-sm shadow-[0_12px_32px_rgba(0,0,0,0.38)] flex items-center gap-2 group hover:bg-white/95 dark:hover:bg-stone-900/95 transition-all"
               >
                 <MailOpen className="w-4 h-4 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform" />
                 <span className="font-serif italic font-semibold">Ver mensaje especial</span>
@@ -191,7 +191,7 @@ export default function App() {
           </main>
 
           {/* Pie de página delicado */}
-          <footer className="text-center text-xs text-amber-100/90 dark:text-stone-300/90 px-4 mt-2 mb-2 drop-shadow-md">
+          <footer className="text-center text-[11px] sm:text-xs text-amber-100/90 dark:text-stone-300/90 px-4 mb-1 drop-shadow-md hidden sm:block">
             <p className="font-serif italic">
               Un jardín de flores para ti 🌻
             </p>
