@@ -65,7 +65,7 @@ export default function App() {
       id: Date.now(),
     });
 
-    audioManager.playSunflowerChime(Math.floor(Math.random() * 5));
+    audioManager.playSunflowerChime(Math.floor(Math.random() * 8));
   };
 
   return (
@@ -73,7 +73,42 @@ export default function App() {
       className="relative min-h-screen text-garden-body dark:text-garden-darkBody selection:bg-amber-200 dark:selection:bg-amber-900/60 cursor-pointer overflow-x-hidden flex flex-col justify-between"
       onClick={hasStarted ? handleScreenClick : undefined}
     >
-      {/* Partículas de polen y luz dorada flotante */}
+      {/* CAPA DE FONDO 3D PANORÁMICA: CAMPO ABIERTO DE GIRASOLES Y MONTAÑAS */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Imagen del campo con suave movimiento de cámara cinemático */}
+        <motion.div
+          animate={{
+            scale: [1, 1.04, 1],
+            y: [0, -8, 0]
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 24,
+            ease: "easeInOut"
+          }}
+          className="absolute inset-0 w-full h-full"
+        >
+          <img
+            src="/campo-girasoles.jpg"
+            alt="Campo infinito de girasoles"
+            className="w-full h-full object-cover object-[50%_28%] select-none brightness-[0.92] contrast-[1.05] dark:brightness-[0.42] dark:contrast-[1.25] transition-all duration-700"
+          />
+        </motion.div>
+
+        {/* Gradiente de luz solar y calidez del cielo en atardecer */}
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-200/25 via-transparent to-stone-950/75 dark:from-indigo-950/50 dark:via-transparent dark:to-stone-950/92 pointer-events-none" />
+
+        {/* Halo resplandeciente del sol dorado en el horizonte */}
+        <div className="absolute top-0 left-1/3 -translate-x-1/2 w-[600px] h-[360px] rounded-full bg-gradient-to-b from-amber-100/35 via-amber-300/18 to-transparent blur-3xl pointer-events-none dark:opacity-20" />
+
+        {/* Neblina dorada atmosférica sobre las montañas y el fondo */}
+        <div className="absolute top-[32%] left-0 right-0 h-32 bg-gradient-to-b from-amber-100/10 via-amber-200/12 to-transparent blur-lg pointer-events-none dark:opacity-10" />
+
+        {/* Sombra de contraste inferior para fundir el suelo con las flores interactivas */}
+        <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-stone-950/85 via-stone-950/45 to-transparent pointer-events-none" />
+      </div>
+
+      {/* Partículas de polen y chispas doradas flotando en el aire */}
       <PollenParticles />
 
       {/* Efecto visual al tocar la pantalla */}
@@ -90,11 +125,11 @@ export default function App() {
             pointerEvents: 'none',
             zIndex: 9999,
           }}
-          className="w-10 h-10 rounded-full border-2 border-amber-400 bg-amber-300/30 shadow-[0_0_15px_rgba(251,191,36,0.8)]"
+          className="w-10 h-10 rounded-full border-2 border-amber-300 bg-amber-300/35 shadow-[0_0_20px_rgba(251,191,36,0.9)]"
         />
       )}
 
-      {/* Pantalla inicial de bienvenida */}
+      {/* Pantalla inicial de bienvenida con vista del campo */}
       <AnimatePresence>
         {!hasStarted && (
           <IntroScreen
@@ -118,19 +153,19 @@ export default function App() {
             />
           </div>
 
-          {/* Encabezado limpio */}
+          {/* Encabezado limpio con resplandor suave */}
           <header className="pt-8 sm:pt-12 pb-1 text-center px-4 max-w-md mx-auto">
             <motion.h1
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="font-serif italic text-3xl sm:text-4xl text-garden-title dark:text-garden-darkTitle font-medium tracking-tight"
+              className="font-serif italic text-3xl sm:text-4xl text-amber-950 dark:text-amber-100 font-semibold tracking-tight drop-shadow-[0_2px_14px_rgba(255,255,255,0.7)] dark:drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]"
             >
               Un jardín de flores para ti
             </motion.h1>
           </header>
 
-          {/* Sección de los 5 girasoles floreciendo */}
+          {/* Sección del Jardín Panorámico 3D */}
           <main className="flex-1 flex flex-col items-center justify-center my-auto">
             <SunflowerGarden
               onSelectSunflower={() => setIsLetterModalOpen(true)}
@@ -146,7 +181,7 @@ export default function App() {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={handleOpenModal}
-                className="py-3 px-6 rounded-2xl glass-modal border border-amber-300/60 dark:border-amber-600/50 text-amber-900 dark:text-amber-200 font-medium text-sm shadow-md flex items-center gap-2 group hover:bg-white dark:hover:bg-stone-900 transition-all"
+                className="py-3 px-6 rounded-2xl glass-modal border border-amber-300/70 dark:border-amber-500/60 text-amber-950 dark:text-amber-100 font-medium text-sm shadow-[0_12px_32px_rgba(0,0,0,0.38)] flex items-center gap-2 group hover:bg-white/95 dark:hover:bg-stone-900/95 transition-all"
               >
                 <MailOpen className="w-4 h-4 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform" />
                 <span className="font-serif italic font-semibold">Ver mensaje especial</span>
@@ -156,7 +191,7 @@ export default function App() {
           </main>
 
           {/* Pie de página delicado */}
-          <footer className="text-center text-xs text-stone-500 dark:text-stone-400 px-4 mt-2 mb-2">
+          <footer className="text-center text-xs text-amber-100/90 dark:text-stone-300/90 px-4 mt-2 mb-2 drop-shadow-md">
             <p className="font-serif italic">
               Un jardín de flores para ti 🌻
             </p>
@@ -167,7 +202,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Modal Único de Mensaje */}
+      {/* Modal Único de Mensaje con retrato de psicóloga */}
       <LetterModal
         isOpen={isLetterModalOpen}
         onClose={() => setIsLetterModalOpen(false)}
