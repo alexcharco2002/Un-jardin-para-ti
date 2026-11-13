@@ -15,62 +15,71 @@
 
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    color: #451A03;
-    background-color: #0c0806;
+    color: #4A3F35;
+    background-color: #FDFBF7;
+    background-image: 
+      radial-gradient(circle at 50% 0%, #FEF3C7 0%, transparent 65%),
+      radial-gradient(circle at 100% 40%, rgba(253, 230, 138, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 0% 70%, rgba(254, 243, 199, 0.5) 0%, transparent 55%);
+    background-attachment: fixed;
     min-height: 100vh;
-    overflow-x: hidden;
+    transition: background 0.4s ease, color 0.4s ease;
   }
 
   .dark body, body.dark {
-    color: #FEF3C7;
-    background-color: #070504;
+    color: #E7DDD5;
+    background-color: #120E0C;
+    background-image: 
+      radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.16) 0%, transparent 60%),
+      radial-gradient(circle at 100% 35%, rgba(180, 83, 9, 0.14) 0%, transparent 50%),
+      radial-gradient(circle at 0% 75%, rgba(120, 53, 15, 0.18) 0%, transparent 55%);
   }
 }
 
 /* Glassmorphism Classes en modo claro */
 .glass-card {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.84);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  box-shadow: 0 14px 38px -8px rgba(120, 53, 15, 0.18), 0 4px 14px -2px rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  box-shadow: 0 14px 38px -8px rgba(120, 53, 15, 0.12), 0 4px 14px -2px rgba(245, 158, 11, 0.08);
 }
 
 .glass-pill {
   background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  box-shadow: 0 4px 18px -2px rgba(69, 26, 3, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  box-shadow: 0 4px 18px -2px rgba(69, 26, 3, 0.09);
 }
 
 .glass-modal {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(245, 158, 11, 0.45);
-  box-shadow: 0 24px 50px -10px rgba(69, 26, 3, 0.3), 0 0 35px 2px rgba(251, 191, 36, 0.32);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 24px 50px -10px rgba(69, 26, 3, 0.2), 0 0 30px 2px rgba(251, 191, 36, 0.28);
 }
 
 /* Glassmorphism en MODO OSCURO (Noche estrellada / atardecer íntimo) */
 .dark .glass-card {
-  background: rgba(24, 18, 15, 0.9);
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  box-shadow: 0 14px 40px -8px rgba(0, 0, 0, 0.75), 0 0 22px 2px rgba(245, 158, 11, 0.16);
+  background: rgba(28, 22, 19, 0.88);
+  border: 1px solid rgba(245, 158, 11, 0.32);
+  box-shadow: 0 14px 40px -8px rgba(0, 0, 0, 0.65), 0 0 22px 2px rgba(245, 158, 11, 0.12);
 }
 
 .dark .glass-pill {
-  background: rgba(28, 20, 16, 0.92);
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  background: rgba(32, 25, 21, 0.9);
+  border: 1px solid rgba(245, 158, 11, 0.35);
   color: #FEF3C7;
-  box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.65), 0 0 15px rgba(245, 158, 11, 0.12);
+  box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.55), 0 0 15px rgba(245, 158, 11, 0.08);
 }
 
 .dark .glass-modal {
-  background: rgba(20, 14, 11, 0.97);
-  border: 1.5px solid rgba(245, 158, 11, 0.5);
-  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.9), 0 0 35px 3px rgba(245, 158, 11, 0.25);
-  color: #FEF3C7;
+  background: rgba(24, 18, 15, 0.96);
+  border: 1.5px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.85), 0 0 35px 3px rgba(245, 158, 11, 0.22);
+  color: #E7DDD5;
 }
 
 .dark .text-garden-title {
@@ -78,29 +87,12 @@
 }
 
 .dark .text-garden-body {
-  color: #FDE68A;
+  color: #E7DDD5;
 }
 
 /* Sunflower sway origin */
 .origin-stem-base {
   transform-origin: bottom center;
-}
-
-/* Animación sutil de respiración de cámara (Ken Burns) sobre el campo */
-@keyframes slowKenBurns {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  50% {
-    transform: scale(1.05) translate(-0.8%, -0.5%);
-  }
-  100% {
-    transform: scale(1) translate(0, 0);
-  }
-}
-
-.animate-slow-kenburns {
-  animation: slowKenBurns 32s ease-in-out infinite alternate;
 }
 
 /* ANIMACIONES ORGÁNICAS DE FLORECIMIENTO MULTICAPA (Inspiradas en Code With Anurag) */
