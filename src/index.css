@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #451A03;
+    background-color: #0c0806;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .dark body, body.dark {
+    color: #FEF3C7;
+    background-color: #070504;
+  }
+}
+
+/* Glassmorphism Classes en modo claro */
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 14px 38px -8px rgba(120, 53, 15, 0.18), 0 4px 14px -2px rgba(245, 158, 11, 0.12);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 4px 18px -2px rgba(69, 26, 3, 0.14);
+}
+
+.glass-modal {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 24px 50px -10px rgba(69, 26, 3, 0.3), 0 0 35px 2px rgba(251, 191, 36, 0.32);
+}
+
+/* Glassmorphism en MODO OSCURO (Noche estrellada / atardecer íntimo) */
+.dark .glass-card {
+  background: rgba(24, 18, 15, 0.9);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 14px 40px -8px rgba(0, 0, 0, 0.75), 0 0 22px 2px rgba(245, 158, 11, 0.16);
+}
+
+.dark .glass-pill {
+  background: rgba(28, 20, 16, 0.92);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #FEF3C7;
+  box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.65), 0 0 15px rgba(245, 158, 11, 0.12);
+}
+
+.dark .glass-modal {
+  background: rgba(20, 14, 11, 0.97);
+  border: 1.5px solid rgba(245, 158, 11, 0.5);
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.9), 0 0 35px 3px rgba(245, 158, 11, 0.25);
+  color: #FEF3C7;
+}
+
+.dark .text-garden-title {
+  color: #FEF3C7;
+}
+
+.dark .text-garden-body {
+  color: #FDE68A;
+}
+
+/* Sunflower sway origin */
+.origin-stem-base {
+  transform-origin: bottom center;
+}
+
+/* Animación sutil de respiración de cámara (Ken Burns) sobre el campo */
+@keyframes slowKenBurns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.05) translate(-0.8%, -0.5%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.animate-slow-kenburns {
+  animation: slowKenBurns 32s ease-in-out infinite alternate;
+}
+
+/* ANIMACIONES ORGÁNICAS DE FLORECIMIENTO MULTICAPA (Inspiradas en Code With Anurag) */
+
+/* 1. Tallo: brota orgánicamente desde la tierra hacia arriba */
+@keyframes stemDraw {
+  0% {
+    stroke-dashoffset: 550;
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.animate-bloom-stem-stroke {
+  stroke-dasharray: 550;
+  stroke-dashoffset: 550;
+  animation: stemDraw 1.25s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+/* 2. Hojas: se abren con curvatura natural */
+@keyframes organicLeafLeft {
+  0% {
+    transform: scale(0) rotate(-28deg);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(1.15) rotate(4deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes organicLeafRight {
+  0% {
+    transform: scale(0) rotate(28deg);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(1.15) rotate(-4deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.animate-leaf-left {
+  transform-origin: 0% 0%;
+  animation: organicLeafLeft 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.55s backwards;
+}
+
+.animate-leaf-right {
+  transform-origin: 0% 0%;
+  animation: organicLeafRight 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s backwards;
+}
+
+/* 3. Halo dorado resplandeciente */
+@keyframes organicAuraBloom {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes warmAuraBreathing {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.85;
+  }
+}
+
+.sunflower-glow-aura {
+  transform-origin: 0px 0px;
+  transform-box: view-box;
+  animation: organicAuraBloom 1.4s cubic-bezier(0.2, 0.9, 0.3, 1) 0.5s backwards,
+             warmAuraBreathing 4s ease-in-out 1.9s infinite;
+}
+
+/* 4. Pétalos individuales: apertura en espiral multicapa */
+@keyframes organicPetalUnfurl {
+  0% {
+    transform: scale(0) rotate(-14deg);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.8;
+  }
+  75% {
+    transform: scale(1.09) rotate(2deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.sunflower-single-petal {
+  transform-origin: 0px 0px;
+  transform-box: view-box;
+}
+
+/* 5. Disco central de semillas */
+@keyframes organicDiscBloom {
+  0% {
+    transform: scale(0.08);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.sunflower-center-disc {
+  transform-origin: 0px 0px;
+  transform-box: view-box;
+}
+
+/* Balanceo suave con viento */
+@keyframes sway-gentle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2.4deg);
+  }
+}
+
+@keyframes sway-left {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-2.8deg);
+  }
+}
+
+@keyframes sway-right {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3.2deg);
+  }
+}
+
+.animate-sway-gentle {
+  animation: sway-gentle 5.5s ease-in-out infinite;
+}
+
+.animate-sway-left {
+  animation: sway-left 6.2s ease-in-out infinite;
+}
+
+.animate-sway-right {
+  animation: sway-right 5.8s ease-in-out infinite;
+}
+
+/* Custom discreet scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(217, 119, 6, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 119, 6, 0.45);
+}
